@@ -1,0 +1,36 @@
+{
+  "quizTitle": "General Knowledge Quiz",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple-choice",
+      "question": "What is the capital of France?",
+      "options": ["Paris", "London", "Rome", "Berlin"],
+      "answers": [0],
+      "explanation": "Paris is the capital of France."
+    },
+    {
+      "id": 2,
+      "type": "short-answer",
+      "question": "Name a programming language starting with 'P'.",
+      "answers": ["Python", "Perl"],
+      "explanation": "Python and Perl are examples of programming languages starting with 'P'."
+    },
+    {
+      "id": 3,
+      "type": "true-false",
+      "question": "The Earth is flat.",
+      "options": ["True", "False"],
+      "answers": [1],
+      "explanation": "The Earth is a sphere."
+    },
+    {
+      "id": 4,
+      "type": "multiple-choice",
+      "question": "Which of the following are programming languages?",
+      "options": ["JavaScript", "HTML", "CSS", "Python"],
+      "answers": [0, 3],
+      "explanation": "JavaScript and Python are programming languages."
+    }
+  ]
+}

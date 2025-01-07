@@ -1,0 +1,617 @@
+{
+  "quizTitle": "Translation Quiz",
+  "questions": [
+    {
+      "id": 1,
+      "type": "short-answer",
+      "question": "Thew boss gave instructions",
+      "answers": [
+        "상사가 지시사항을 내렸다."
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 2,
+      "type": "short-answer",
+      "question": "상사가 지시사항을 내렸다.",
+      "answers": [
+        "Thew boss gave instructions"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 3,
+      "type": "short-answer",
+      "question": "She wrote a note",
+      "answers": [
+        "그녀는 메모를 했다."
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 4,
+      "type": "short-answer",
+      "question": "그녀는 메모를 했다.",
+      "answers": [
+        "She wrote a note"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 5,
+      "type": "short-answer",
+      "question": "I sent an email",
+      "answers": [
+        "나는 이메일을 보냈다."
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 6,
+      "type": "short-answer",
+      "question": "나는 이메일을 보냈다.",
+      "answers": [
+        "I sent an email"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 7,
+      "type": "short-answer",
+      "question": "He cleaned his desk",
+      "answers": [
+        "그는 책상을 정리했다."
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 8,
+      "type": "short-answer",
+      "question": "그는 책상을 정리했다.",
+      "answers": [
+        "He cleaned his desk"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 9,
+      "type": "short-answer",
+      "question": "The team finished the project",
+      "answers": [
+        "그 팀은 프로젝트를 끝냈다."
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 10,
+      "type": "short-answer",
+      "question": "그 팀은 프로젝트를 끝냈다.",
+      "answers": [
+        "The team finished the project"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 11,
+      "type": "short-answer",
+      "question": "You made a mistake",
+      "answers": [
+        "너는 실수를 했다."
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 12,
+      "type": "short-answer",
+      "question": "너는 실수를 했다.",
+      "answers": [
+        "You made a mistake"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 13,
+      "type": "short-answer",
+      "question": "She called the client",
+      "answers": [
+        "그녀는 고객에게 전화를 걸었습니다."
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 14,
+      "type": "short-answer",
+      "question": "그녀는 고객에게 전화를 걸었습니다.",
+      "answers": [
+        "She called the client"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 15,
+      "type": "short-answer",
+      "question": "Did the client respond?",
+      "answers": [
+        "고객이 전화를 받았나요?"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 16,
+      "type": "short-answer",
+      "question": "고객이 전화를 받았나요?",
+      "answers": [
+        "Did the client respond?"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 17,
+      "type": "short-answer",
+      "question": "Where were you?",
+      "answers": [
+        "어디에 계셨나요?"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 18,
+      "type": "short-answer",
+      "question": "어디에 계셨나요?",
+      "answers": [
+        "Where were you?"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 19,
+      "type": "short-answer",
+      "question": "I went down to get coffee",
+      "answers": [
+        "밑에 커피 얻으러(사러/마시러) 갔었습니다."
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 20,
+      "type": "short-answer",
+      "question": "밑에 커피 얻으러(사러/마시러) 갔었습니다.",
+      "answers": [
+        "I went down to get coffee"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 21,
+      "type": "short-answer",
+      "question": "Do you have the file?",
+      "answers": [
+        "그 파일을 가지고 계시나요?"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 22,
+      "type": "short-answer",
+      "question": "그 파일을 가지고 계시나요?",
+      "answers": [
+        "Do you have the file?"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 23,
+      "type": "short-answer",
+      "question": "Yes, I saved them on my computer",
+      "answers": [
+        "네, 제 컴퓨터에 저장해 놓았습니다."
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 24,
+      "type": "short-answer",
+      "question": "네, 제 컴퓨터에 저장해 놓았습니다.",
+      "answers": [
+        "Yes, I saved them on my computer"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 25,
+      "type": "short-answer",
+      "question": "She scheduled the meeting",
+      "answers": [
+        "그녀가 미팅 일정을 잡았습니다."
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 26,
+      "type": "short-answer",
+      "question": "그녀가 미팅 일정을 잡았습니다.",
+      "answers": [
+        "She scheduled the meeting"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 27,
+      "type": "short-answer",
+      "question": "When and where is the meeting?",
+      "answers": [
+        "미팅을 언제 어디서 하나요?"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 28,
+      "type": "short-answer",
+      "question": "미팅을 언제 어디서 하나요?",
+      "answers": [
+        "When and where is the meeting?"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 29,
+      "type": "short-answer",
+      "question": "Have you seen Mr.Lee?",
+      "answers": [
+        "Mr.Lee를 보셨나요?"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 30,
+      "type": "short-answer",
+      "question": "Mr.Lee를 보셨나요?",
+      "answers": [
+        "Have you seen Mr.Lee?"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 31,
+      "type": "short-answer",
+      "question": "He went to the exhibition",
+      "answers": [
+        "그는 전시회에 갔어요."
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 32,
+      "type": "short-answer",
+      "question": "그는 전시회에 갔어요.",
+      "answers": [
+        "He went to the exhibition"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 33,
+      "type": "short-answer",
+      "question": "Have you been abroad?",
+      "answers": [
+        "해외에 가본 적이 있나요?"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 34,
+      "type": "short-answer",
+      "question": "해외에 가본 적이 있나요?",
+      "answers": [
+        "Have you been abroad?"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 35,
+      "type": "short-answer",
+      "question": "I went to Japan to travel last year",
+      "answers": [
+        "작년에 일본에 여행하러 갔었어요."
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 36,
+      "type": "short-answer",
+      "question": "작년에 일본에 여행하러 갔었어요.",
+      "answers": [
+        "I went to Japan to travel last year"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 37,
+      "type": "short-answer",
+      "question": "She lived in the US",
+      "answers": [
+        "그녀는 미국에서 살았었다."
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 38,
+      "type": "short-answer",
+      "question": "그녀는 미국에서 살았었다.",
+      "answers": [
+        "She lived in the US"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 39,
+      "type": "short-answer",
+      "question": "We went to the training session",
+      "answers": [
+        "우리는 교육 세션에 갔었다."
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 40,
+      "type": "short-answer",
+      "question": "우리는 교육 세션에 갔었다.",
+      "answers": [
+        "We went to the training session"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 41,
+      "type": "short-answer",
+      "question": "I interviewed the CEO of the cooperation",
+      "answers": [
+        "나는 협력회사의 CEO를 인터뷰 했었다."
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 42,
+      "type": "short-answer",
+      "question": "나는 협력회사의 CEO를 인터뷰 했었다.",
+      "answers": [
+        "I interviewed the CEO of the cooperation"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 43,
+      "type": "short-answer",
+      "question": "I worked overtime yesterday",
+      "answers": [
+        "나는 어제 야근했다."
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 44,
+      "type": "short-answer",
+      "question": "나는 어제 야근했다.",
+      "answers": [
+        "I worked overtime yesterday"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 45,
+      "type": "short-answer",
+      "question": "You sent the file yesterday",
+      "answers": [
+        "너는 어제 파일을 보냈다."
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 46,
+      "type": "short-answer",
+      "question": "너는 어제 파일을 보냈다.",
+      "answers": [
+        "You sent the file yesterday"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 47,
+      "type": "short-answer",
+      "question": "They had problems with the boss",
+      "answers": [
+        "그들은 상사와 갈등이 있었다."
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 48,
+      "type": "short-answer",
+      "question": "그들은 상사와 갈등이 있었다.",
+      "answers": [
+        "They had problems with the boss"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 49,
+      "type": "short-answer",
+      "question": "seem/seemed",
+      "answers": [
+        "보이다"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 50,
+      "type": "short-answer",
+      "question": "보이다",
+      "answers": [
+        "seem/seemed"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 51,
+      "type": "short-answer",
+      "question": "help/helped",
+      "answers": [
+        "돕다"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 52,
+      "type": "short-answer",
+      "question": "돕다",
+      "answers": [
+        "help/helped"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 53,
+      "type": "short-answer",
+      "question": "talk/talked",
+      "answers": [
+        "말하다"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 54,
+      "type": "short-answer",
+      "question": "말하다",
+      "answers": [
+        "talk/talked"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 55,
+      "type": "short-answer",
+      "question": "turn/tumed",
+      "answers": [
+        "돌리다, 바꾸다"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 56,
+      "type": "short-answer",
+      "question": "돌리다, 바꾸다",
+      "answers": [
+        "turn/tumed"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 57,
+      "type": "short-answer",
+      "question": "start/started",
+      "answers": [
+        "시작하다"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 58,
+      "type": "short-answer",
+      "question": "시작하다",
+      "answers": [
+        "start/started"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 59,
+      "type": "short-answer",
+      "question": "show/showed",
+      "answers": [
+        "보여주다"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 60,
+      "type": "short-answer",
+      "question": "보여주다",
+      "answers": [
+        "show/showed"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 61,
+      "type": "short-answer",
+      "question": "hear/heard",
+      "answers": [
+        "듣다"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 62,
+      "type": "short-answer",
+      "question": "듣다",
+      "answers": [
+        "hear/heard"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 63,
+      "type": "short-answer",
+      "question": "play/played",
+      "answers": [
+        "놀다, 연주하다"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 64,
+      "type": "short-answer",
+      "question": "놀다, 연주하다",
+      "answers": [
+        "play/played"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 65,
+      "type": "short-answer",
+      "question": "run/ran",
+      "answers": [
+        "달리다"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 66,
+      "type": "short-answer",
+      "question": "달리다",
+      "answers": [
+        "run/ran"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 67,
+      "type": "short-answer",
+      "question": "move/moved",
+      "answers": [
+        "움직이다"
+      ],
+      "explanation": ""
+    },
+    {
+      "id": 68,
+      "type": "short-answer",
+      "question": "움직이다",
+      "answers": [
+        "move/moved"
+      ],
+      "explanation": ""
+    }
+  ]
+}

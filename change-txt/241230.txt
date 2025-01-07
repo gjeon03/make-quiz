@@ -1,0 +1,34 @@
+Thew boss gave instructions : 상사가 지시사항을 내렸다.
+She wrote a note : 그녀는 메모를 했다.
+I sent an email : 나는 이메일을 보냈다.
+He cleaned his desk : 그는 책상을 정리했다.
+The team finished the project : 그 팀은 프로젝트를 끝냈다.
+You made a mistake : 너는 실수를 했다.
+She called the client : 그녀는 고객에게 전화를 걸었습니다.
+Did the client respond? : 고객이 전화를 받았나요?
+Where were you? : 어디에 계셨나요?
+I went down to get coffee : 밑에 커피 얻으러(사러/마시러) 갔었습니다.
+Do you have the file? : 그 파일을 가지고 계시나요?
+Yes, I saved them on my computer : 네, 제 컴퓨터에 저장해 놓았습니다.
+She scheduled the meeting : 그녀가 미팅 일정을 잡았습니다.
+When and where is the meeting? : 미팅을 언제 어디서 하나요?
+Have you seen Mr.Lee? : Mr.Lee를 보셨나요?
+He went to the exhibition : 그는 전시회에 갔어요.
+Have you been abroad? : 해외에 가본 적이 있나요?
+I went to Japan to travel last year : 작년에 일본에 여행하러 갔었어요.
+She lived in the US : 그녀는 미국에서 살았었다.
+We went to the training session : 우리는 교육 세션에 갔었다.
+I interviewed the CEO of the cooperation : 나는 협력회사의 CEO를 인터뷰 했었다.
+I worked overtime yesterday : 나는 어제 야근했다.
+You sent the file yesterday : 너는 어제 파일을 보냈다.
+They had problems with the boss : 그들은 상사와 갈등이 있었다.
+seem/seemed : 보이다
+help/helped : 돕다
+talk/talked : 말하다
+turn/tumed : 돌리다, 바꾸다
+start/started : 시작하다
+show/showed : 보여주다
+hear/heard : 듣다
+play/played : 놀다, 연주하다
+run/ran : 달리다
+move/moved : 움직이다
