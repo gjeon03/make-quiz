@@ -205,7 +205,19 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
   };
 
   const handleQuestionMix = (key: string) => {
-    if (key === "Random 10") {
+    if (key === "Random 1") {
+      const randomQuestions = questions
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 1);
+
+      setQuestionsResult(randomQuestions);
+    } else if (key === "Random 5") {
+      const randomQuestions = questions
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 5);
+
+      setQuestionsResult(randomQuestions);
+    } else if (key === "Random 10") {
       const randomQuestions = questions
         .sort(() => Math.random() - 0.5)
         .slice(0, 10);
@@ -222,15 +234,17 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
       <div className="w-full flex items-center justify-center relative flex-col">
         <h1 className="text-2xl font-bold text-center mb-6">{quizTitle}</h1>
         <div className="flex gap-5 w-full">
-          {["Random 10", "Mix All"].map((key, index) => (
-            <button
-              key={index}
-              className="w-full border rounded-lg p-2"
-              onClick={() => handleQuestionMix(key)}
-            >
-              {key}
-            </button>
-          ))}
+          {["Random 1", "Random 5", "Random 10", "Mix All"].map(
+            (key, index) => (
+              <button
+                key={index}
+                className="w-full border rounded-lg p-2"
+                onClick={() => handleQuestionMix(key)}
+              >
+                {key}
+              </button>
+            )
+          )}
         </div>
       </div>
 
@@ -251,6 +265,14 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
                 {isCorrectAnswer(question, userAnswers[question.id])
                   ? "정답입니다! 🎉"
                   : "틀렸습니다 ❌"}
+              </p>
+              <p className="mt-2">
+                <strong>정답:</strong>{" "}
+                {question.answers
+                  .map((answer) =>
+                    typeof answer === "number" ? answer + 1 : answer
+                  )
+                  .join(", ")}
               </p>
               <p className="mt-2">{question.explanation}</p>
             </div>
