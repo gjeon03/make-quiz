@@ -250,7 +250,7 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
 
       {questionsResult.map((question) => (
         <div key={question.id} className="p-4 border rounded-lg shadow-sm mb-4">
-          <p className="text-lg font-medium mb-4">{question.question}</p>
+          <p className="text-lg font-medium mb-4">{`[${question.id}] ${question.question}`}</p>
           {renderQuestion(question)}
 
           {showResults && (
