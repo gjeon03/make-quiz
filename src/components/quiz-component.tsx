@@ -139,7 +139,7 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
                     onChange={() => handleMultiChoice(question.id, idx)}
                     disabled={showResults}
                   />
-                  <span>{option}</span>
+                  <p className="flex-wrap">{option}</p>
                 </label>
               ))}
             </div>

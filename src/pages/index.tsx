@@ -1,8 +1,23 @@
 import fs from "fs";
 import path from "path";
+import { useState } from "react";
 import Link from "next/link";
 
 const Home = ({ quizzes }: { quizzes: string[] }) => {
+  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [password, setPassword] = useState("");
+
+  const TEMP_PASSWORD = "9435";
+
+  const handlePasswordSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === TEMP_PASSWORD) {
+      setIsAuthorized(true);
+    } else {
+      alert("비밀번호가 틀렸습니다!");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="max-w-2xl w-full bg-white shadow-md rounded-lg p-6">
@@ -10,16 +25,42 @@ const Home = ({ quizzes }: { quizzes: string[] }) => {
           Select a Quiz
         </h1>
         <ul className="space-y-4">
-          {quizzes.map((quiz) => (
-            <li key={quiz}>
-              <Link
-                href={`/quiz/${quiz.replace(".json", "")}`}
-                className="block w-full py-3 px-6 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600 text-center transition"
-              >
-                {quiz.replace(".json", "")}
-              </Link>
-            </li>
-          ))}
+          {quizzes.map((quiz) => {
+            const quizName = quiz.replace(".json", "").replace(/\//g, "-");
+            const isPrivateName = !isNaN(Number(quizName)); // 숫자로 변환 가능하면 private
+
+            return (
+              <li key={quiz}>
+                {isPrivateName ? (
+                  !isAuthorized ? (
+                    <form onSubmit={handlePasswordSubmit}>
+                      <input
+                        type="password"
+                        placeholder="Enter Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                      <button type="submit">Unlock</button>
+                    </form>
+                  ) : (
+                    <Link
+                      href={`/quiz/${quiz.replace(".json", "")}`}
+                      className="block w-full py-3 px-6 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600 text-center transition"
+                    >
+                      {quizName} (Private)
+                    </Link>
+                  )
+                ) : (
+                  <Link
+                    className="block w-full py-3 px-6 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600 text-center transition"
+                    href={`/quiz/${quiz.replace(".json", "")}`}
+                  >
+                    {quizName}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>
