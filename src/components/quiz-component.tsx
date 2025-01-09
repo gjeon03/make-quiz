@@ -139,7 +139,9 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
                     onChange={() => handleMultiChoice(question.id, idx)}
                     disabled={showResults}
                   />
-                  <p className="flex-wrap">{option}</p>
+                  <p className="flex-wrap text-wrap">
+                    {option.replace(/={2,}/g, "")}
+                  </p>
                 </label>
               ))}
             </div>
@@ -159,7 +161,9 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
                     checked={userAnswer[0] === idx}
                     disabled={showResults}
                   />
-                  <span>{option}</span>
+                  <span className="flex-wrap text-wrap">
+                    {option.replace(/={2,}/g, "")}
+                  </span>
                 </label>
               ))}
             </div>
@@ -182,7 +186,9 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
                   checked={userAnswer[0] === idx}
                   disabled={showResults}
                 />
-                <span>{option}</span>
+                <span className="flex-wrap text-wrap">
+                  {option.replace(/={2,}/g, "")}
+                </span>
               </label>
             ))}
           </div>
