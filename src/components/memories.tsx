@@ -1,13 +1,7 @@
 import { MemoriesCardType, MemoryQuestion } from "@/pages/memory/[id]";
-import { use, useEffect, useRef, useState } from "react";
-import {
-  Swiper as SwiperComponent,
-  SwiperSlide,
-  useSwiper,
-} from "swiper/react";
+import { useEffect, useRef, useState } from "react";
+import { Swiper as SwiperComponent, SwiperSlide } from "swiper/react";
 import type Swiper from "swiper";
-
-import { Navigation, Pagination } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
