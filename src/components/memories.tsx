@@ -93,6 +93,7 @@ const Memories: React.FC<MemoriesCardType> = ({ memoryTitle, questions }) => {
               onSwiper={(swiper) => (swiperRef.current = swiper)}
               spaceBetween={50}
               slidesPerView={1}
+              allowTouchMove={false}
             >
               {testQuestions.map((question) => (
                 <SwiperSlide
