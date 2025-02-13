@@ -1,6 +1,6 @@
 import pdfplumber
 
-pdf_path = "test.pdf"  # 문제의 PDF 파일 경로
+pdf_path = "dvaaaa.pdf"  # 문제의 PDF 파일 경로
 output_txt_path = "output.txt"  # 변환된 텍스트를 저장할 파일
 
 with pdfplumber.open(pdf_path) as pdf:
