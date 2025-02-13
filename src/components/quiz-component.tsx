@@ -1,4 +1,4 @@
-import React, { JSX, useState } from "react";
+import React, { JSX, useEffect, useState } from "react";
 
 interface Question {
   id: number;
@@ -28,6 +28,8 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
   const [showResults, setShowResults] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
   const [questionsResult, setQuestionsResult] = useState<Question[]>(questions);
+  const [favorite, setFavorite] = useState<number[]>([]);
+  const [selected, setSelected] = useState<string>("Default");
 
   const handleSingleChoice = (questionId: number, value: string): void => {
     setUserAnswers((prev) => ({
@@ -287,8 +289,16 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
   };
 
   const handleQuestionMix = (key: string) => {
+    setSelected(key);
+    handleReset();
     if (key === "Default") {
       setQuestionsResult(questions);
+    } else if (key === "Favorite") {
+      const favoriteQuestions = questions.filter((question) =>
+        favorite.includes(question.id)
+      );
+
+      setQuestionsResult(favoriteQuestions);
     } else if (key === "Random 1") {
       const randomQuestions = [...questions]
         .sort(() => Math.random() - 0.5)
@@ -335,6 +345,19 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
     setShowResults(false);
   };
 
+  const handleReset = () => {
+    setShowResults(false);
+    setScore(0);
+    setUserAnswers({});
+    setMultiSelections({});
+  };
+
+  useEffect(() => {
+    const favorite = localStorage.getItem("favorite");
+    const favoriteArray = favorite ? JSON.parse(favorite) : [];
+    setFavorite(favoriteArray);
+  }, []);
+
   return (
     <div className="max-w-3xl mx-auto p-4 space-y-6 pb-28 ">
       <div className="w-full flex items-center justify-center relative flex-col overflow-hidden">
@@ -342,12 +365,7 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
         <div className="flex gap-5 w-full flex-wrap">
           <button
             className="w-full border rounded-lg p-2"
-            onClick={() => {
-              setShowResults(false);
-              setScore(0);
-              setUserAnswers({});
-              setMultiSelections({});
-            }}
+            onClick={handleReset}
           >
             Answer Reset
           </button>
@@ -356,8 +374,10 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
             <select
               className="w-full border rounded-lg p-2 text-black"
               onChange={(e) => handleQuestionMix(e.target.value)}
+              value={selected}
             >
               <option value="Default">Default</option>
+              <option value="Favorite">Favorite</option>
               <option value="Mix All">Mix All</option>
               <option value="Random 1">Random 1</option>
               <option value="Random 5">Random 5</option>
@@ -383,9 +403,70 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
           key={question.id}
           className="p-4 border rounded-lg shadow-sm mb-4 overflow-x-auto text-sm sm:text-lg"
         >
-          <p className="text-sm sm:text-lg font-medium mb-4">{`[${
-            question.id
-          }] ${question.question.replace(/={2,}/g, "").trim()}`}</p>
+          <p className="text-sm sm:text-lg font-medium mb-4">
+            {`[${question.id}] ${question.question
+              .replace(/={2,}/g, "")
+              .trim()}`}
+            <label className="ml-4 text-sm inline-flex items-center">
+              <input
+                type="checkbox"
+                className="ml-4"
+                checked={favorite.includes(question.id)}
+                onChange={() => {
+                  // localStorage에 즐겨찾기 저장
+                  const favorite = localStorage.getItem("favorite");
+                  const favoriteArray = favorite ? JSON.parse(favorite) : [];
+
+                  if (favoriteArray.includes(question.id)) {
+                    const index = favoriteArray.indexOf(question.id);
+                    favoriteArray.splice(index, 1);
+                  } else {
+                    favoriteArray.push(question.id);
+                  }
+
+                  localStorage.setItem(
+                    "favorite",
+                    JSON.stringify(favoriteArray)
+                  );
+
+                  setFavorite(favoriteArray);
+
+                  // 즐겨찾기 목록에서 제거
+                  if (selected === "Favorite") {
+                    const favoriteQuestions = questions.filter((question) =>
+                      favoriteArray.includes(question.id)
+                    );
+
+                    setQuestionsResult(favoriteQuestions);
+                  }
+                }}
+              />
+              <span>즐겨찾기</span>
+            </label>
+            {/* <button
+              className={`ml-4 border rounded-md p-1 text-sm text-center ${
+                favorite.includes(question.id) ? "bg-purple-900" : ""
+              }`}
+              onClick={() => {
+                // localStorage에 즐겨찾기 저장
+                const favorite = localStorage.getItem("favorite");
+                const favoriteArray = favorite ? JSON.parse(favorite) : [];
+
+                if (favoriteArray.includes(question.id)) {
+                  const index = favoriteArray.indexOf(question.id);
+                  favoriteArray.splice(index, 1);
+                } else {
+                  favoriteArray.push(question.id);
+                }
+
+                localStorage.setItem("favorite", JSON.stringify(favoriteArray));
+
+                setFavorite(favoriteArray);
+              }}
+            >
+              ⭐️
+            </button> */}
+          </p>
           {renderQuestion(question)}
 
           {showResults && (
