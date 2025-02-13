@@ -36,26 +36,49 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
     }));
   };
 
+  // const handleMultiChoice = (questionId: number, optionIndex: number): void => {
+  //   setMultiSelections((prev) => {
+  //     const current = prev[questionId] || new Set<number>();
+  //     const updated = new Set(current);
+
+  //     if (updated.has(optionIndex)) {
+  //       updated.delete(optionIndex);
+  //     } else {
+  //       updated.add(optionIndex);
+  //     }
+
+  //     setUserAnswers((prevAnswers) => ({
+  //       ...prevAnswers,
+  //       [questionId]: Array.from(updated),
+  //     }));
+
+  //     return {
+  //       ...prev,
+  //       [questionId]: updated,
+  //     };
+  //   });
+  // };
+
   const handleMultiChoice = (questionId: number, optionIndex: number): void => {
     setMultiSelections((prev) => {
-      const current = prev[questionId] || new Set<number>();
-      const updated = new Set(current);
+      const updatedSelections = { ...prev };
+      const currentSelections = new Set(updatedSelections[questionId] || []);
 
-      if (updated.has(optionIndex)) {
-        updated.delete(optionIndex);
+      if (currentSelections.has(optionIndex)) {
+        currentSelections.delete(optionIndex);
       } else {
-        updated.add(optionIndex);
+        currentSelections.add(optionIndex);
       }
 
+      updatedSelections[questionId] = currentSelections;
+
+      // 선택된 옵션을 배열로 변환하여 userAnswers 업데이트
       setUserAnswers((prevAnswers) => ({
         ...prevAnswers,
-        [questionId]: Array.from(updated),
+        [questionId]: Array.from(currentSelections),
       }));
 
-      return {
-        ...prev,
-        [questionId]: updated,
-      };
+      return updatedSelections;
     });
   };
 
@@ -83,9 +106,35 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
           correct++;
         }
       } else {
+        // 객관식 문제 처리
+        const answerMapping: Record<string, number> = {
+          A: 0,
+          B: 1,
+          C: 2,
+          D: 3,
+          E: 4,
+          F: 5,
+          G: 6,
+          H: 7,
+          I: 8,
+          J: 9,
+        };
+
+        // 정답을 숫자로 변환
+        const correctAnswers = question.answers.map((a) =>
+          typeof a === "string" ? answerMapping[a] ?? -1 : a
+        );
+
+        // 유저 답안을 숫자로 변환
+        const userAnswerNumbers = userAnswer.map((ua) =>
+          typeof ua === "string" ? answerMapping[ua] ?? -1 : ua
+        );
+
+        // 정답 체크
         const isCorrect =
-          question.answers.length === userAnswer.length &&
-          question.answers.every((a) => userAnswer.includes(a));
+          correctAnswers.length === userAnswerNumbers.length &&
+          correctAnswers.every((a) => userAnswerNumbers.includes(a));
+
         if (isCorrect) correct++;
       }
     });
@@ -110,6 +159,21 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
   ): boolean => {
     if (!userAnswer?.length) return false;
 
+    // 정답을 숫자로 변환하는 매핑
+    const answerMapping: Record<string, number> = {
+      A: 0,
+      B: 1,
+      C: 2,
+      D: 3,
+      E: 4,
+      F: 5,
+      G: 6,
+      H: 7,
+      I: 8,
+      J: 9,
+    };
+
+    // 단답형 처리 (기존 로직 유지)
     if (question.type === "short-answer") {
       const normalizedUserAnswer = normalizeAnswer(userAnswer[0]);
       return question.answers.some(
@@ -117,9 +181,19 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
       );
     }
 
+    // 정답과 유저 답안을 숫자로 변환
+    const correctAnswers = question.answers.map((a) =>
+      typeof a === "string" ? answerMapping[a] ?? -1 : a
+    );
+
+    const userAnswerNumbers = userAnswer.map((ua) =>
+      typeof ua === "string" ? answerMapping[ua] ?? -1 : ua
+    );
+
+    // 모든 정답이 포함되고 길이가 동일해야 함
     return (
-      question.answers.length === userAnswer.length &&
-      question.answers.every((a) => userAnswer.includes(a))
+      correctAnswers.length === userAnswerNumbers.length &&
+      correctAnswers.every((a) => userAnswerNumbers.includes(a))
     );
   };
 
@@ -135,11 +209,13 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
                 <label key={idx} className="flex items-center gap-2">
                   <input
                     type="checkbox"
-                    checked={multiSelections[question.id]?.has(idx)}
+                    checked={(multiSelections[question.id] ?? new Set()).has(
+                      idx
+                    )}
                     onChange={() => handleMultiChoice(question.id, idx)}
                     disabled={showResults}
                   />
-                  <p className="flex-wrap text-wrap">
+                  <p className="break-words whitespace-pre-wrap">
                     {option.replace(/={2,}/g, "")}
                   </p>
                 </label>
@@ -211,52 +287,105 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
   };
 
   const handleQuestionMix = (key: string) => {
-    if (key === "Random 1") {
-      const randomQuestions = questions
+    if (key === "Default") {
+      setQuestionsResult(questions);
+    } else if (key === "Random 1") {
+      const randomQuestions = [...questions]
         .sort(() => Math.random() - 0.5)
         .slice(0, 1);
 
       setQuestionsResult(randomQuestions);
     } else if (key === "Random 5") {
-      const randomQuestions = questions
+      const randomQuestions = [...questions]
         .sort(() => Math.random() - 0.5)
         .slice(0, 5);
 
       setQuestionsResult(randomQuestions);
     } else if (key === "Random 10") {
-      const randomQuestions = questions
+      const randomQuestions = [...questions]
         .sort(() => Math.random() - 0.5)
         .slice(0, 10);
 
       setQuestionsResult(randomQuestions);
     } else if (key === "Mix All") {
       setQuestionsResult(questions.sort(() => Math.random() - 0.5));
+    } else if (key === "1-50") {
+      setQuestionsResult(questions.slice(0, 50));
+    } else if (key === "51-100") {
+      setQuestionsResult(questions.slice(50, 100));
+    } else if (key === "101-150") {
+      setQuestionsResult(questions.slice(100, 150));
+    } else if (key === "151-200") {
+      setQuestionsResult(questions.slice(150, 200));
+    } else if (key === "201-250") {
+      setQuestionsResult(questions.slice(200, 250));
+    } else if (key === "251-300") {
+      setQuestionsResult(questions.slice(250, 300));
+    } else if (key === "301-350") {
+      setQuestionsResult(questions.slice(300, 350));
+    } else if (key === "351-400") {
+      setQuestionsResult(questions.slice(350, 400));
+    } else if (key === "401-450") {
+      setQuestionsResult(questions.slice(400, 450));
+    } else if (key === "451-500") {
+      setQuestionsResult(questions.slice(450, 500));
+    } else if (key === "501-550") {
+      setQuestionsResult(questions.slice(500, 550));
     }
     setShowResults(false);
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-4 space-y-6">
-      <div className="w-full flex items-center justify-center relative flex-col">
+    <div className="max-w-3xl mx-auto p-4 space-y-6 pb-28 ">
+      <div className="w-full flex items-center justify-center relative flex-col overflow-hidden">
         <h1 className="text-2xl font-bold text-center mb-6">{quizTitle}</h1>
-        <div className="flex gap-5 w-full">
-          {["Random 1", "Random 5", "Random 10", "Mix All"].map(
-            (key, index) => (
-              <button
-                key={index}
-                className="w-full border rounded-lg p-2"
-                onClick={() => handleQuestionMix(key)}
-              >
-                {key}
-              </button>
-            )
-          )}
+        <div className="flex gap-5 w-full flex-wrap">
+          <button
+            className="w-full border rounded-lg p-2"
+            onClick={() => {
+              setShowResults(false);
+              setScore(0);
+              setUserAnswers({});
+              setMultiSelections({});
+            }}
+          >
+            Answer Reset
+          </button>
+
+          <div className="w-full">
+            <select
+              className="w-full border rounded-lg p-2 text-black"
+              onChange={(e) => handleQuestionMix(e.target.value)}
+            >
+              <option value="Default">Default</option>
+              <option value="Mix All">Mix All</option>
+              <option value="Random 1">Random 1</option>
+              <option value="Random 5">Random 5</option>
+              <option value="Random 10">Random 10</option>
+              <option value="1-50">1-50</option>
+              <option value="51-100">51-100</option>
+              <option value="101-150">101-150</option>
+              <option value="151-200">151-200</option>
+              <option value="201-250">201-250</option>
+              <option value="251-300">251-300</option>
+              <option value="301-350">301-350</option>
+              <option value="351-400">351-400</option>
+              <option value="401-450">401-450</option>
+              <option value="451-500">451-500</option>
+              <option value="501-550">501-550</option>
+            </select>
+          </div>
         </div>
       </div>
 
       {questionsResult.map((question) => (
-        <div key={question.id} className="p-4 border rounded-lg shadow-sm mb-4">
-          <p className="text-lg font-medium mb-4">{`[${question.id}] ${question.question}`}</p>
+        <div
+          key={question.id}
+          className="p-4 border rounded-lg shadow-sm mb-4 overflow-x-auto text-sm sm:text-lg"
+        >
+          <p className="text-sm sm:text-lg font-medium mb-4">{`[${
+            question.id
+          }] ${question.question.replace(/={2,}/g, "").trim()}`}</p>
           {renderQuestion(question)}
 
           {showResults && (
@@ -267,12 +396,12 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
                   : "bg-red-100"
               }`}
             >
-              <p className="font-medium">
+              <p className="font-medium text-black">
                 {isCorrectAnswer(question, userAnswers[question.id])
                   ? "정답입니다! 🎉"
                   : "틀렸습니다 ❌"}
               </p>
-              <p className="mt-2">
+              <p className="mt-2 text-black">
                 <strong>정답:</strong>{" "}
                 {question.answers
                   .map((answer) =>
@@ -287,16 +416,18 @@ const QuizComponent: React.FC<Quiz> = ({ quizTitle, questions }) => {
       ))}
 
       {!showResults && (
-        <button
-          onClick={handleSubmit}
-          className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-        >
-          제출하기
-        </button>
+        <div className="fixed bottom-0 left-0 w-full p-4 bg-black border-t">
+          <button
+            onClick={handleSubmit}
+            className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+          >
+            제출하기
+          </button>
+        </div>
       )}
 
       {showResults && (
-        <div className="text-center">
+        <div className="fixed bottom-0 left-0 w-full p-4 bg-black border-t text-center">
           <p className="text-xl font-bold">
             최종 점수: {score} / {questionsResult.length}(
             {((score / questionsResult.length) * 100).toFixed(1)}%)
